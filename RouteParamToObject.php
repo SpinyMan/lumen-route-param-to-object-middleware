@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Dingo\Api\Http\Request;
+use Laravel\Lumen\Http\Request;
 use Illuminate\Support\Arr;
 use ReflectionMethod;
 
