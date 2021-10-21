@@ -39,7 +39,7 @@ class RouteParamToObject
                     Arr::set($route, "2.{$name}", $model::findOrFail($params[$name]));
                 }
 
-                app('request')->setRouteResolver(function () use ($route) {
+                $request->setRouteResolver(function () use ($route) {
                     return $route;
                 });
             }
