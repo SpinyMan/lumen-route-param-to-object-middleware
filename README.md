@@ -9,7 +9,7 @@ Installation:
 ```injectablephp
 $app->routeMiddleware(
     [
-        'param2object' => \App\Http\Middleware\RouteParamToObject::class,
+        'param2object' => \SpinyMan\LumenRouteParamToObject\Middleware\RouteParamToObject::class,
     ]
 );
 ```
