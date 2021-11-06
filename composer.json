@@ -1,0 +1,37 @@
+{
+    "name": "spinyman/lumen-route-param-to-object-middleware",
+    "description": "Lumen middleware to use Route parameters as objects",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "SpinyMan\\LumenRouteParamToObject\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SpinyMan\\LumenRouteParamToObject\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andrew Busel",
+            "email": "spinyman@tut.by"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "require": {
+        "php": ">=7.2.5",
+        "laravel/lumen-framework": "^7.0|^8.0"
+    },
+    "require-dev": {
+        "guzzlehttp/guzzle": "^6.0",
+        "phpunit/phpunit": "^8.0|^9.0"
+    }
+}

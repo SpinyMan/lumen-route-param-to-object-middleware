@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace SpinyMan\LumenRouteParamToObject\Middleware;
 
 use Closure;
+use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Http\Request;
 use Illuminate\Support\Arr;
 use ReflectionMethod;
@@ -19,9 +20,9 @@ class RouteParamToObject
                 $uses = Arr::get($route, '1.uses');
                 [$controller, $action] = explode('@', $uses);
                 $reflectionMethod = new ReflectionMethod($controller, $action);
-                $actionParams = $reflectionMethod->getParameters();
+                $actionParams     = $reflectionMethod->getParameters();
                 foreach ($actionParams as $actionParam) {
-                    $name  = $actionParam->getName();
+                    $name = $actionParam->getName();
                     if (!isset($params[$name])) {
                         continue;
                     }
@@ -36,12 +37,20 @@ class RouteParamToObject
                         continue;
                     }
 
-                    Arr::set($route, "2.{$name}", $model::findOrFail($params[$name]));
+                    if ($model instanceof Model) {
+                        $object = $model::query()
+                            ->findOrFail($params[$name]);
+                    } else {
+                        $object = new $model($params[$name]);
+                    }
+                    Arr::set($route, "2.{$name}", $object);
                 }
 
-                $request->setRouteResolver(function () use ($route) {
-                    return $route;
-                });
+                $request->setRouteResolver(
+                    function () use ($route) {
+                        return $route;
+                    }
+                );
             }
         }
 
