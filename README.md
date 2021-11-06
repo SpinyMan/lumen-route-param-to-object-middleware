@@ -6,7 +6,7 @@ This is a route middleware.
 Installation:
 
 1. Register middleware in `./bootstrap/app.php`:
-```
+```injectablephp
 $app->routeMiddleware(
     [
         'param2object' => \App\Http\Middleware\RouteParamToObject::class,
@@ -14,12 +14,12 @@ $app->routeMiddleware(
 );
 ```
 2. Add it to any group route (ex.: RouteServiceProvider):
-```
+```injectablephp
 $this->router->group(
     [
         'middleware' => 'param2object',
     ],
-    function () {
+    static function () {
         // your code goes here
     }
 );
