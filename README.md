@@ -53,11 +53,12 @@ class Book extends \Illuminate\Database\Eloquent\Model
 ```
 
 ```php
-//BookController
-public function show(\Laravel\Lumen\Http\Request $request, Book $book)
-{
-    $bookId = $book->getKey();
-    // your code goes here
+class BookController extends \Laravel\Lumen\Routing\Controller {
+    public function show(\Laravel\Lumen\Http\Request $request, Book $book)
+    {
+        $bookId = $book->getKey();
+        // your code goes here
+    }
 }
 ```
 
@@ -99,9 +100,11 @@ class Namer
 ```
 
 ```php
-//NamerController
-public function run(\Laravel\Lumen\Http\Request $request, Namer $namer)
+class NamerController extends \Laravel\Lumen\Routing\Controller
 {
-    return $namer->getName();
+    public function run(\Laravel\Lumen\Http\Request $request, Namer $namer)
+    {
+        return $namer->getName();
+    }
 }
 ```

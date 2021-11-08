@@ -4,7 +4,7 @@ namespace SpinyMan\LumenRouteParamToObject\Middleware;
 
 use Closure;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Lumen\Http\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use ReflectionMethod;
 
