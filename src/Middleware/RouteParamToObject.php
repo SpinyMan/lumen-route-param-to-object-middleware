@@ -37,7 +37,7 @@ class RouteParamToObject
                         continue;
                     }
 
-                    if ($model instanceof Model) {
+                    if (is_subclass_of($model, Model::class)) {
                         $object = $model::query()
                             ->findOrFail($params[$name]);
                     } else {
